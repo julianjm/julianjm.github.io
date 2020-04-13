@@ -8,7 +8,9 @@ tags: heap, libc 2.27
 
 Tenemos un reto de heap clásico, con 3 opciones en el menú: escribir, leer y liberar.
 
-El binario tiene 2 vulnerabilidades, permite liberar el mismo registro varias veces, y también podemos leer un registro liberado.
+El binario tiene 2 vulnerabilidades:
+* permite liberar el mismo registro varias veces
+* podemos leer un registro ya liberado liberado
 
 ![checksec]({{site.base_url}}/files/c0r0nac0n/checksec.png)
 
@@ -18,7 +20,7 @@ Vemos que están habilitadas todas las medidas de seguridad, y que el binario us
 
 El tcache de libc 2.26 y superiores, mantiene una lista de chunks liberados por tamaño y thread de ejecución. Almacena hasta un total de 7 chunks. Una vez lleno, funciona igual que en versiones anteriores, y el chunk liberado, en función de su tamaño, va al bin que le corresponda (fastbin, smallbin, unsorted bin).
 
-Los chunks en el tcache se almacenan en una lista doblemente enlazada (punteros fd y bk). Usando la vulnerabilidad use-after-free podríamos liberar uno y obtener su contenido (veríamos el puntero fd), pero serían direcciones del heap, que no nos sirven.
+Los chunks en el tcache se almacenan en una lista doblemente enlazada (punteros `fd` y `bk`). Usando la vulnerabilidad use-after-free podríamos liberar uno y obtener su contenido (veríamos el puntero `fd`), pero serían direcciones del heap, que no nos sirven.
 
 En cambio, si liberamos 8 veces un chunk del tamaño adecuado, 7 llenarían el tcache y el octavo entraría al unsorted bin, y su parámetro `fd` pasaría a contener un puntero al `main_arena`. Esta dirección está entro de la libc, y su distancia con la dirección base puede calcularse fácilmente.
 
