@@ -10,7 +10,7 @@ Tenemos un reto de heap clásico, con 3 opciones en el menú: escribir, leer y l
 
 El binario tiene 2 vulnerabilidades:
 * permite liberar el mismo registro varias veces
-* podemos leer un registro ya liberado liberado
+* podemos leer un registro ya liberado
 
 ![checksec]({{site.base_url}}/files/c0r0nac0n/checksec.png)
 
