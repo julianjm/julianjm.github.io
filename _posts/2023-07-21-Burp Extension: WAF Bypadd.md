@@ -2,7 +2,7 @@
 layout: post
 title: Burp Suite Extension&#58; WAF Bypadd
 tags: burp suite, waf, web, pentest
-excerpt: WAF Bypadd es una extensión que permite evadir algunos WAFs, evitando que los payloads inyectados en las peticiones sean bloqueados, y lleguen a la aplicación web potencialmente vulnerable.
+excerpt: WAF Bypadd es una extensión para Burp Suite que permite evadir algunos WAFs, evitando que los payloads inyectados en las peticiones sean bloqueados, y lleguen a la aplicación web potencialmente vulnerable.
 ---
 
 
