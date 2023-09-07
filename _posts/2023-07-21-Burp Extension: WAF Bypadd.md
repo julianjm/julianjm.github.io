@@ -57,7 +57,15 @@ Tras activar la extensión, los payloads que utiliza Burp llegan a la aplicació
 
 ## Descarga e instalación
 
+### BurpSuite App Store
+
+La extensión está disponible desde el propio Burp:
+
+![BApp Store](/files/waf_bypadd/bappstore.png) 
+
 Vamos a intentar que sea incluida en la tienda de extensiones de Burp Suite pero, de momento, la única opción es descargar la extensión y añadirla manualmente a Burp.
+
+### Instalación manual
 
 ```sh
 $ git clone https://github.com/julianjm/waf_bypadd
